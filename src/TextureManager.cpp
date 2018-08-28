@@ -10,3 +10,7 @@ SDL_Texture * TextureManager::loadTexture(const char* filename){
     SDL_FreeSurface(tmpSurface);
     return playerTex;
 }
+
+void TextureManager::Draw(SDL_Texture * tex, SDL_Rect src, SDL_Rect dest){
+    SDL_RenderCopy(StaticGamePropertys::renderer, tex, &src, &dest);
+}

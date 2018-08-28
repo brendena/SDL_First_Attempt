@@ -12,6 +12,9 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "StaticGamePropertys.h"
+#include "Map.h"
+#include "ECS.h"
+#include "Components.h"
 
 class Game {
 public:

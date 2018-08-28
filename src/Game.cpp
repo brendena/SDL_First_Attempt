@@ -6,7 +6,10 @@
 
 GameObject * player;
 GameObject * enemy;
+Map* map;
 
+Manager manager;
+auto& newPlayer(manager.addEntity());
 
 
 Game::Game(){
@@ -42,6 +45,9 @@ void Game::init(const char * title, int xpos, int ypos, int width, int height, b
 
     player = new GameObject("../assets/santa.png", 0, 0);
     enemy  = new GameObject("../assets/santa.png", 200, 0);
+    map = new Map();
+
+    newPlayer.addComponent<PositionComponent>();
 
 }
 
@@ -62,9 +68,14 @@ void Game::handleEvents()
 void Game::update(){
     player->Update();
     enemy->Update();
+    manager.update();
+
+    newPlayer.getComponent<PositionComponent>().x();
+    std::cout << newPlayer.getComponent<PositionComponent>() << "," << newPlayer.getComponent<PositionComponent>().y() << std::endl;
 }
 void Game::render(){
     SDL_RenderClear(StaticGamePropertys::renderer);
+    map->drawMap();
     player->Render();
     enemy->Render();
     SDL_RenderPresent(StaticGamePropertys::renderer);
