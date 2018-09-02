@@ -71,7 +71,7 @@ void Game::update(){
     manager.update();
 
     newPlayer.getComponent<PositionComponent>().x();
-    std::cout << newPlayer.getComponent<PositionComponent>() << "," << newPlayer.getComponent<PositionComponent>().y() << std::endl;
+    std::cout << newPlayer.getComponent<PositionComponent>().x() << "," << newPlayer.getComponent<PositionComponent>().y() << std::endl;
 }
 void Game::render(){
     SDL_RenderClear(StaticGamePropertys::renderer);

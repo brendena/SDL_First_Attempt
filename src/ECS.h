@@ -52,19 +52,19 @@ public:
         for(auto& c : components){
             c->update();
         }
+
+    }
+
+    void draw(){
         for(auto&c : components) {
             c->draw();
         }
     }
-
-    void draw(){
-
-    }
-    const bool isActive()  { return active;}
+    bool isActive()  const { return active;}
     void destroy(){active = false;}
 
     template <typename T>
-    const bool hasComponent(){
+    bool hasComponent() const {
         return componentBitSet[getComponentTypeID<T>];
     }
 
@@ -72,7 +72,7 @@ public:
     T& addComponent(TArgs&&... mArgs)
     {
         T* c(new T(std::forward<TArgs>(mArgs)... ));
-        c->enityt = this;
+        c->entity = this;
         std::unique_ptr<Component> uPtr{ c };
         components.emplace_back(std::move(uPtr));
 
@@ -82,7 +82,7 @@ public:
         return *c;
     }
 
-    template<typename T> const T&getComponent(){
+    template<typename T>  T&getComponent() const {
         auto ptr(componentArray[getComponentTypeID<T>()]);
         return*static_cast<T*>(ptr);
     }
