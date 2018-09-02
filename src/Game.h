@@ -10,11 +10,9 @@
 #include <iostream>
 
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "StaticGamePropertys.h"
 #include "Map.h"
-#include "ECS.h"
-#include "Components.h"
+#include "ECS/Components.h"
 
 class Game {
 public:

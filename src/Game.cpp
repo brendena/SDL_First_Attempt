@@ -4,12 +4,10 @@
 
 #include "Game.h"
 
-GameObject * player;
-GameObject * enemy;
 Map* map;
 
 Manager manager;
-auto& newPlayer(manager.addEntity());
+auto& player(manager.addEntity());
 
 
 Game::Game(){
@@ -43,11 +41,13 @@ void Game::init(const char * title, int xpos, int ypos, int width, int height, b
         isRunning = false;
     }
 
-    player = new GameObject("../assets/santa.png", 0, 0);
-    enemy  = new GameObject("../assets/santa.png", 200, 0);
+    //player = new GameObject("../assets/santa.png", 0, 0);
+    //enemy  = new GameObject("../assets/santa.png", 200, 0);
     map = new Map();
 
-    newPlayer.addComponent<PositionComponent>();
+    player.addComponent<PositionComponent>();
+    player.getComponent<PositionComponent>().setPos(100,100);
+    player.addComponent<SpriteComponent>("../assets/santa.png");
 
 }
 
@@ -66,18 +66,13 @@ void Game::handleEvents()
     }
 }
 void Game::update(){
-    player->Update();
-    enemy->Update();
     manager.update();
-
-    newPlayer.getComponent<PositionComponent>().x();
-    std::cout << newPlayer.getComponent<PositionComponent>().x() << "," << newPlayer.getComponent<PositionComponent>().y() << std::endl;
+    manager.update();
 }
 void Game::render(){
     SDL_RenderClear(StaticGamePropertys::renderer);
     map->drawMap();
-    player->Render();
-    enemy->Render();
+    manager.draw();
     SDL_RenderPresent(StaticGamePropertys::renderer);
 }
 void Game::clean(){

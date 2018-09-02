@@ -1,13 +1,24 @@
 //
-// Created by brendena on 8/27/18.
+// Created by brendena on 9/2/18.
 //
 
-#ifndef SDL2TEST_COMPONENTS_H
-#define SDL2TEST_COMPONENTS_H
-#include "ECS.h"
+#ifndef SDL2TEST_POSITIONCOMPONENT_H
+#define SDL2TEST_POSITIONCOMPONENT_H
+
+#include "Components.h"
 
 class PositionComponent : public Component{
 public:
+    PositionComponent(){
+        xpos = 0;
+        ypos = 0;
+    }
+    PositionComponent(int x, int y){
+        xpos = x;
+        ypos = y;
+    }
+
+
     int x() { return xpos; }
     int y() { return ypos; }
 
@@ -34,4 +45,4 @@ private:
     int ypos = 0;
 };
 
-#endif //SDL2TEST_COMPONENTS_H
+#endif //SDL2TEST_POSITIONCOMPONENT_H
