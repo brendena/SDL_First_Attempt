@@ -7,4 +7,5 @@
 #include "ECS.h"
 #include "TransformComponent.h"
 #include "SpriteComponent.h"
+#include "KeyboardController.h"
 #endif //SDL2TEST_COMPONENTS_H

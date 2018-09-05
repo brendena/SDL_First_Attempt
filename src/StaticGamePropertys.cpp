@@ -5,3 +5,4 @@
 #include "StaticGamePropertys.h"
 
 SDL_Renderer * StaticGamePropertys::renderer = nullptr;
+SDL_Event StaticGamePropertys::event;

@@ -46,18 +46,16 @@ void Game::init(const char * title, int xpos, int ypos, int width, int height, b
     map = new Map();
 
     player.addComponent<TransformComponent>();
-    player.getComponent<TransformComponent>().position.x = 100;
-    player.getComponent<TransformComponent>().position.y = 100;
+    player.addComponent<KeyboardController>();
     player.addComponent<SpriteComponent>("../assets/santa.png");
 
 }
 
 void Game::handleEvents()
 {
-    SDL_Event event;
-    SDL_PollEvent(&event);
+    SDL_PollEvent(&StaticGamePropertys::event);
 
-    switch(event.type){
+    switch(StaticGamePropertys::event.type){
         case SDL_QUIT:
             isRunning = false;
             break;
@@ -69,7 +67,7 @@ void Game::handleEvents()
 void Game::update(){
     manager.refresh();
     manager.update();
-    player.getComponent<TransformComponent>().position.Add(Vector2D(5,0));
+
 }
 void Game::render(){
     SDL_RenderClear(StaticGamePropertys::renderer);
