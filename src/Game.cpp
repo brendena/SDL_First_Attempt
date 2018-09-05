@@ -45,8 +45,9 @@ void Game::init(const char * title, int xpos, int ypos, int width, int height, b
     //enemy  = new GameObject("../assets/santa.png", 200, 0);
     map = new Map();
 
-    player.addComponent<PositionComponent>();
-    player.getComponent<PositionComponent>().setPos(100,100);
+    player.addComponent<TransformComponent>();
+    player.getComponent<TransformComponent>().position.x = 100;
+    player.getComponent<TransformComponent>().position.y = 100;
     player.addComponent<SpriteComponent>("../assets/santa.png");
 
 }
@@ -66,8 +67,9 @@ void Game::handleEvents()
     }
 }
 void Game::update(){
+    manager.refresh();
     manager.update();
-    manager.update();
+    player.getComponent<TransformComponent>().position.Add(Vector2D(5,0));
 }
 void Game::render(){
     SDL_RenderClear(StaticGamePropertys::renderer);
