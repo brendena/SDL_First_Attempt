@@ -16,6 +16,9 @@ public:
     SpriteComponent(const char* path){
         setText(path);
     }
+    ~SpriteComponent(){
+        SDL_DestroyTexture(texture);
+    }
 
     void setText(const char* path){
         texture = TextureManager::loadTexture(path);
@@ -26,8 +29,10 @@ public:
         transform = &entity->getComponent<TransformComponent>();
 
         srcRect.x = srcRect.y = 0;
-        srcRect.w = srcRect.h = 32;
-        destRect.w = destRect.h = 64;
+        srcRect.w = transform->width;
+        srcRect.h = transform->height;
+        destRect.w = transform->width * transform->scale;
+        destRect.h = transform->height * transform->scale;
 
     }
 

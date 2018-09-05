@@ -16,7 +16,6 @@ public:
 
     void init() override
     {
-        std::cout << "~~sa!!!!" << std::endl;
         transform = &entity->getComponent<TransformComponent>();
     }
 

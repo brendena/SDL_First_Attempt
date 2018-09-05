@@ -13,7 +13,7 @@
 #include "StaticGamePropertys.h"
 #include "Map.h"
 #include "ECS/Components.h"
-
+#include "Collision.h"
 class Game {
 public:
     Game();

@@ -8,7 +8,7 @@ Map* map;
 
 Manager manager;
 auto& player(manager.addEntity());
-
+auto& wall(manager.addEntity());
 
 Game::Game(){
 
@@ -41,14 +41,16 @@ void Game::init(const char * title, int xpos, int ypos, int width, int height, b
         isRunning = false;
     }
 
-    //player = new GameObject("../assets/santa.png", 0, 0);
-    //enemy  = new GameObject("../assets/santa.png", 200, 0);
     map = new Map();
 
-    player.addComponent<TransformComponent>();
+    player.addComponent<TransformComponent>(2);
     player.addComponent<KeyboardController>();
     player.addComponent<SpriteComponent>("../assets/santa.png");
+    player.addComponent<ColliderComponent>("player");
 
+    wall.addComponent<TransformComponent>(300.0f, 300.0f,300,20,1);
+    wall.addComponent<SpriteComponent>("../assets/dirt.png");
+    wall.addComponent<ColliderComponent>("wall");
 }
 
 void Game::handleEvents()
@@ -67,6 +69,13 @@ void Game::handleEvents()
 void Game::update(){
     manager.refresh();
     manager.update();
+
+
+    auto wallCollision = wall.getComponent<ColliderComponent>().collider;
+    auto playerCollision = player.getComponent<ColliderComponent>().collider;
+    if(Collision::AABB(playerCollision,wallCollision)){
+        std::cout << "wall hit" << std::endl;
+    }
 
 }
 void Game::render(){

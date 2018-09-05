@@ -8,4 +8,5 @@
 #include "TransformComponent.h"
 #include "SpriteComponent.h"
 #include "KeyboardController.h"
+#include "ColliderComponent.h"
 #endif //SDL2TEST_COMPONENTS_H
