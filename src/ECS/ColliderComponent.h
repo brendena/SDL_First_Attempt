@@ -10,7 +10,7 @@
 
 #include "ECS.h"
 #include "TransformComponent.h"
-
+#include "../StaticGamePropertys.h"
 
 class ColliderComponent : public Component {
 public:
@@ -36,6 +36,7 @@ public:
         }
         transform = &entity->getComponent<TransformComponent>();
 
+        StaticGamePropertys::colliders.push_back(this);
     }
 
     void update() override{

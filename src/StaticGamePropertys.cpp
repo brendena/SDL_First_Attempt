@@ -6,3 +6,10 @@
 
 SDL_Renderer * StaticGamePropertys::renderer = nullptr;
 SDL_Event StaticGamePropertys::event;
+
+std::vector<ColliderComponent*> StaticGamePropertys::colliders;
+
+
+void StaticGamePropertys::AddTile(int i, int x, int y){
+
+}

@@ -6,8 +6,9 @@
 #define SDL2TEST_SPRITECOMPONENT_H
 
 #include <SDL.h>
-#include "Components.h"
+#include "ECS.h"
 #include "../TextureManager.h"
+#include "TransformComponent.h"
 
 class SpriteComponent : public Component
 {

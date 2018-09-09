@@ -5,7 +5,7 @@
 #ifndef SDL2TEST_POSITIONCOMPONENT_H
 #define SDL2TEST_POSITIONCOMPONENT_H
 
-#include "Components.h"
+#include "ECS.h"
 #include "../Vector2D.h"
 #include "../StaticGamePropertys.h"
 
