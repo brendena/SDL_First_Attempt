@@ -10,6 +10,12 @@ Manager manager;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
+
+// i want to create a fps counter entity
+//just don't exactly know how to go about doing it.
+//http://sdl.beuc.net/sdl.wiki/SDL_Average_FPS_Measurement
+//auto& FPSTimer(manager.addEntity());
+
 Game::Game(){
 
 }
@@ -74,7 +80,10 @@ void Game::update(){
     auto wallCollision = wall.getComponent<ColliderComponent>().collider;
     auto playerCollision = player.getComponent<ColliderComponent>().collider;
     if(Collision::AABB(playerCollision,wallCollision)){
+        player.getComponent<TransformComponent>().scale = 1;
+        player.getComponent<TransformComponent>().velocity *= -1;
         std::cout << "wall hit" << std::endl;
+
     }
 
 }
