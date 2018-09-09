@@ -10,6 +10,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL_image.h>
+#include <fstream>
 
 #include "TextureManager.h"
 #include "StaticGamePropertys.h"
@@ -19,17 +20,9 @@ public:
     Map();
     ~Map();
 
-    void loadMap(int arr[20][25]);
-    void drawMap();
+    void loadMap(std::string path, int sizeX, int sizeY);
 
 private:
-
-    SDL_Rect src, dest;
-    SDL_Texture* dirt;
-    SDL_Texture* grass;
-    SDL_Texture* water;
-
-    int map[20][25];
 
 };
 

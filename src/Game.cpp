@@ -6,19 +6,15 @@
 
 Map* map;
 
-Manager manager;
-auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
-auto& tile0(manager.addEntity());
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
+
+
 
 // i want to create a fps counter entity
 //just don't exactly know how to go about doing it.
 //http://sdl.beuc.net/sdl.wiki/SDL_Average_FPS_Measurement
 //auto& FPSTimer(manager.addEntity());
 
-Game::Game(){
+Game::Game():player(StaticGamePropertys::manager.addEntity()), wall(StaticGamePropertys::manager.addEntity()){
 
 }
 Game::~Game(){
@@ -60,12 +56,6 @@ void Game::init(const char * title, int xpos, int ypos, int width, int height, b
     wall.addComponent<SpriteComponent>("../assets/dirt.png");
     wall.addComponent<ColliderComponent>("wall");
 
-    tile0.addComponent<TileComponent>(200,200,32,32,0);
-    tile0.addComponent<ColliderComponent>("dirt");
-    tile1.addComponent<TileComponent>(250,250,32,32,1);
-    tile1.addComponent<ColliderComponent>("water");
-    tile2.addComponent<TileComponent>(150,150,32,32,2);
-    tile2.addComponent<ColliderComponent>("grass");
 }
 
 void Game::handleEvents()
@@ -82,8 +72,8 @@ void Game::handleEvents()
     }
 }
 void Game::update(){
-    manager.refresh();
-    manager.update();
+    StaticGamePropertys::manager.refresh();
+    StaticGamePropertys::manager.update();
 
 
     auto playerCollision = player.getComponent<ColliderComponent>();
@@ -101,8 +91,7 @@ void Game::update(){
 }
 void Game::render(){
     SDL_RenderClear(StaticGamePropertys::renderer);
-    //map->drawMap();
-    manager.draw();
+    StaticGamePropertys::manager.draw();
     SDL_RenderPresent(StaticGamePropertys::renderer);
 }
 void Game::clean(){

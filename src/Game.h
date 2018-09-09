@@ -33,6 +33,8 @@ public:
 private:
     bool isRunning;
     SDL_Window * window;
+    Entity& player;
+    Entity& wall;
 
     unsigned int cnt = 0;
 };

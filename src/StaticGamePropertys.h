@@ -9,6 +9,8 @@
 #include <SDL2/SDL.h>
 #include <SDL_image.h>
 
+#include "./ECS/ECS.h"
+
 class ColliderComponent;
 
 class StaticGamePropertys {
@@ -16,8 +18,11 @@ public:
     static SDL_Renderer * renderer;
     static SDL_Event event;
     static std::vector<ColliderComponent*> colliders;
+    static Manager manager;
 
-    static void AddTile(int i, int x, int y);
+    static void AddTile(int id, int x, int y);
+
+
 };
 
 
